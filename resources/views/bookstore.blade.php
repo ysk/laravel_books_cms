@@ -3,7 +3,7 @@
 <div class="row container">
     <div class="col-md-12">
     @include('common.errors')
-    <form action="{{ route('book.store') }}" method="POST" class="form-horizontal">
+    <form action="{{ route('book.store') }}" enctype= multipart/form-data method="POST" class="form-horizontal">
     @csrf
         <div class="form-group">
            <label for="item_name">Title</label>
@@ -23,6 +23,17 @@
         <div class="form-group">
             <label for="published">公開日</label>
             <input type="date" name="published" class="form-control" value="{{ old('published') }}"/>
+        </div>
+
+
+        <div class="form-group">
+            <label for="published">公開日</label>
+            <input type="date" name="published" class="form-control" value="{{ old('published') }}"/>
+        </div>
+
+        <div class="form-group">
+            <label for="item_img">表紙画像</label>
+            <input type="file" name="item_img"/>
         </div>
 
         <div class="well well-sm">
