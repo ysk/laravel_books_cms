@@ -14,11 +14,12 @@ class CreateBooksTable extends Migration
     public function up()
     {
         Schema::create('books', function (Blueprint $table) {
-            $table->id();
-            $table->string('item_name'); //書籍名
-            $table->integer('item_number'); //冊数
-            $table->integer('item_amount'); //金額
-            $table->datetime('published'); //出版日
+            $table->bigIncrements('id');
+            $table->bigInteger('user_id');
+            $table->string('item_name');    // 書籍名
+            $table->integer('item_number'); // 冊数
+            $table->integer('item_amount'); // 金額
+            $table->datetime('published');  // 出版日
             $table->timestamps();
             
         });

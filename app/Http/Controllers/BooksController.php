@@ -13,7 +13,13 @@ class BooksController extends Controller
 
     //一覧
     public function index() {
+
+
         $books = Book::orderBy('created_at', 'asc')->paginate(5);
+       
+        //マイページで自分が登録した書籍のみ表示するときは下記
+        //$books = Book::where('user_id', Auth::user()->id)->orderBy('created_at', 'asc')->paginate(5);
+        
         return view('books', [
             'books' => $books
         ]);
@@ -26,6 +32,10 @@ class BooksController extends Controller
         ]);
     }
     public function store(BookPostRequest $request, Book $books) {
+    
+        $user = Auth::user();
+    
+        $books->user_id   = Auth::user()->id;
         $books->item_name   = $request->item_name;
         $books->item_number = $request->item_number;
         $books->item_amount = $request->item_amount;
