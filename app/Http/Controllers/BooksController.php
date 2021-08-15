@@ -11,19 +11,35 @@ use App\Book;
 class BooksController extends Controller
 {
 
+    //一覧
     public function index() {
-        $books = Book::orderBy('created_at', 'asc')->get();
+        $books = Book::orderBy('created_at', 'asc')->paginate(5);
         return view('books', [
             'books' => $books
         ]);
     }
-    
+
+    //登録
+    public function create(Book $books) {
+        return view('bookstore', [
+            'book' => $books
+        ]);
+    }
+    public function store(BookPostRequest $request, Book $books) {
+        $books->item_name = $request->item_name;
+        $books->item_number = $request->item_number;
+        $books->item_amount = $request->item_amount;
+        $books->published = $request->published;
+        $books->save();
+        return redirect('/');
+    }
+
+    // 編集
     public function edit(Book $books) {
         return view('booksedit', [
             'book' => $books
         ]);
     }
-    
     public function update(BookUpdateRequest $request, Book $books) {
         $books = Book::find($request->id);
         $books->item_name   = $request->item_name;
@@ -33,16 +49,8 @@ class BooksController extends Controller
         $books->save();
         return redirect('/');
     }
-    
-    public function store(BookPostRequest $request, Book $books) {
-        $books->item_name = $request->item_name;
-        $books->item_number = $request->item_number;
-        $books->item_amount = $request->item_amount;
-        $books->published = $request->published;
-        $books->save();
-        return redirect('/');
-    }
-        
+
+    //削除
     public function destroy(Book $books) {
         $books->delete();
         return redirect('/');
