@@ -26,12 +26,12 @@ class BooksController extends Controller
         ]);
     }
     public function store(BookPostRequest $request, Book $books) {
-        $books->item_name = $request->item_name;
+        $books->item_name   = $request->item_name;
         $books->item_number = $request->item_number;
         $books->item_amount = $request->item_amount;
-        $books->published = $request->published;
+        $books->published   = $request->published;
         $books->save();
-        return redirect('/');
+        return redirect('/')->with('message','書籍を登録しました');
     }
 
     // 編集
@@ -47,13 +47,13 @@ class BooksController extends Controller
         $books->item_amount = $request->item_amount;
         $books->published   = $request->published;
         $books->save();
-        return redirect('/');
+        return redirect('/')->with('message','書籍を更新しました');
     }
 
     //削除
     public function destroy(Book $books) {
         $books->delete();
-        return redirect('/');
+        return redirect('/')->with('message','書籍を削除しました');
     }
     
 }

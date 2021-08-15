@@ -4,6 +4,13 @@
 <div class="card-body">
     <div class="card-title">本のタイトル</div>
     @include('common.errors')
+
+    @if (session('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
+    @endif
+
     @if (count($books) > 0)
     <div class="card-body">
         <div class="card-body">
