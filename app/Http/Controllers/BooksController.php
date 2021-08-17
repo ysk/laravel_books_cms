@@ -17,8 +17,7 @@ class BooksController extends Controller
 
         $books = Book::orderBy('created_at', 'asc')->paginate(5);
        
-        //マイページで自分が登録した書籍のみ表示するときは下記
-        //$books = Book::where('user_id', Auth::user()->id)->orderBy('created_at', 'asc')->paginate(5);
+
         
         return view('books', [
             'books' => $books

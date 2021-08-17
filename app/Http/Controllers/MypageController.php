@@ -7,6 +7,7 @@ use App\Http\Requests\profileUpdateRequest;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Book;
 
 class MypageController extends Controller
 {
@@ -15,9 +16,14 @@ class MypageController extends Controller
     {
         $id   = Auth::id();
         $user = User::find($id);
-        
+
+        //マイページで自分が登録した書籍のみ表示するときは下記
+        $books = Book::where('user_id', Auth::user()->id)->orderBy('created_at', 'asc')->paginate(5);
+
+
         return view('mypage.profileShow',[
             'user' => $user,
+            'books' => $books,
         ]);
     }
 

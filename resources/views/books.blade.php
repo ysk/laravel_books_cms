@@ -16,7 +16,7 @@
         <div class="card-body">
             <table class="table table-striped task-table">
                 <thead>
-                    <th>本一覧</th>
+                    <th>みんなの本一覧</th>
                     <th>&nbsp;</th>
                 </thead>
                 <tbody>
