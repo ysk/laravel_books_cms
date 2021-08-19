@@ -11,6 +11,13 @@
     </div>
     @endif
 
+    {{-- 検索結果の表示 --}}
+    @if (isset($result))
+    <div class="alert alert-success">
+        {{ $result }}
+    </div>
+    @endif
+
     @if (count($books) > 0)
     <div class="card-body">
         <div class="card-body">

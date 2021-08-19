@@ -12,7 +12,19 @@
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
-                <!-- Authentication Links -->
+                <li>
+                     <form class="form-inline" method="post" action="{{ route('book.search') }}">
+                         @csrf
+                     <div class="input-group">
+                         <input type="text" name="keyword" class="form-control" value="" aria-label="Text input with dropdown button" placeholder="キーワード検索">
+                         <div class="input-group-append">
+                             <button type="submit" class="btn btn-outline-dark">
+                                 <i class="fas fa-search"></i>
+                             </button>
+                         </div>
+                     </div>
+                 </form>
+                </li>
                 @guest
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">ログイン</a>

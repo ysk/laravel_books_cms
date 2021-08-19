@@ -80,5 +80,35 @@ class BooksController extends Controller
         $books->delete();
         return redirect('/')->with('message','書籍を削除しました');
     }
-    
+
+
+    //検索
+    public function searchBooks(Request $request)
+    {
+        $query = Book::query();
+        if ($request->filled('keyword')) {
+            $keyword = '%' . $this->escape($request->input('keyword')) . '%';
+            $query->where(function ($query) use ($keyword) {
+                $query->where('item_name', 'LIKE', $keyword);
+            });
+        }
+        $books  = $query->orderBy('created_at', 'desc')->paginate(10);
+        $count  = count($books);
+        $result = $count ? "{$count}件の検索結果が表示されました" : '検索結果はありませんでした';
+        return view('books', [
+            'books' => $books,
+            'result' => $result,
+            ]);
+    }
+
+    //不正な値をエスケープする
+    private function escape(string $value)
+    {
+        return str_replace(
+            ['\\', '%', '_'],
+            ['\\\\', '\\%', '\\_'],
+            $value
+        );
+    }
+
 }

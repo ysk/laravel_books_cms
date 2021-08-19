@@ -7,6 +7,8 @@ Auth::routes();
 
 //一覧
 Route::get('/', 'BooksController@index')->name('book.index');
+Route::post('/', 'BooksController@searchBooks')->name('book.search');
+
 
 //他のユーザーのプロフィール
 Route::get('/user/{user_id}','UsersController@show')->name('user.show');
