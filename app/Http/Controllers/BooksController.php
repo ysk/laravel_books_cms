@@ -30,11 +30,20 @@ class BooksController extends Controller
     public function store(BookPostRequest $request, Book $books) {
     
         $user = Auth::user();
-    
+   
+        $file = $request->file('item_img');
+        if(!empty($file)){
+            $filename = $file->getClientOriginalName();
+            $move = $file->move('./upload/', $filename);
+        }else{
+            $filename = '';
+        }
+
         $books->user_id   = Auth::user()->id;
         $books->item_name   = $request->item_name;
         $books->item_number = $request->item_number;
         $books->item_amount = $request->item_amount;
+        $books->item_img    = $filename;
         $books->published   = $request->published;
         $books->save();
         return redirect('/')->with('message','書籍を登録しました');
@@ -46,7 +55,17 @@ class BooksController extends Controller
             'book' => $books
         ]);
     }
+
     public function update(BookPostRequest $request, Book $books) {
+
+        $file = $request->file('item_img');
+        if(!empty($file)){
+            $filename = $file->getClientOriginalName();
+            $move = $file->move('./upload/', $filename);
+        }else{
+            $filename = '';
+        }
+
         $books = Book::find($request->id);
         $books->item_name   = $request->item_name;
         $books->item_number = $request->item_number;
