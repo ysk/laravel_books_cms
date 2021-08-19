@@ -16,6 +16,7 @@ class CreateBooksTable extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id');
+            $table->unsignedBigInteger('category_id');
             $table->string('item_name');    // 書籍名
             $table->integer('item_number'); // 冊数
             $table->integer('item_amount'); // 金額
