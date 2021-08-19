@@ -20,7 +20,7 @@ class CreateBooksTable extends Migration
             $table->integer('item_number'); // 冊数
             $table->integer('item_amount'); // 金額
             $table->string('item_img')->nullable(); // 本の表紙画像
-            $table->datetime('published');  // 出版日
+            $table->date('published');  // 出版日
             $table->timestamps();
             
         });

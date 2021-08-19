@@ -27,8 +27,7 @@
                             <div>{{ $book->item_name }}</div>
                                 <div>{{ $book->item_number }}</div>
                                 <div>{{ $book->item_amount }}</div>
-                                <div>{{ $book->published }}</div>
-                                <div>{{ $book->published }}</div>
+                                <div>{{ $book->published->format('Y年m月d日') }}</div>
                                 <div>
                                 @if($book->item_img)
                                 <img src="/upload/{{ $book->item_img }}" alt="{{ $book->item_name }}" style="width:150px;">
