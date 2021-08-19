@@ -49872,8 +49872,8 @@ var app = new Vue({
   el: '#bookDelete',
   methods: {
     confirmSubmit: function confirmSubmit(event) {
-      var confirm = confirm('本当に削除しますか？');
-      if (!confirm) event.preventDefault();
+      var ans = confirm('本当に削除しますか？');
+      if (!ans) event.preventDefault();
     }
   }
 });
