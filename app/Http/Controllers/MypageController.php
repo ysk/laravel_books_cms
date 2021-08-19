@@ -16,7 +16,7 @@ class MypageController extends Controller
     {
         $id    = Auth::id();
         $user  = User::find($id);
-        $books = Book::where('user_id', $id)->orderBy('created_at', 'asc')->paginate(5);
+        $books = Book::where('user_id', $id)->orderBy('created_at', 'desc')->paginate(10);
         return view('mypage.profileShow',[
             'user'  => $user,
             'books' => $books,

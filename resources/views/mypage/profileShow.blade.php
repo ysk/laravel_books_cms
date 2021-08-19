@@ -39,6 +39,12 @@
                     @foreach ($books as $book)
                         <tr>
                             <td class="table-text">
+
+                                @if($book->item_img)
+                                <img src="/upload/{{ $book->item_img }}" alt="{{ $book->item_name }}" style="width:150px;">
+                                @else
+                                <img src="/images/no_image.png" alt="No Image" style="width:150px;">
+                                @endif
                                 <div>{{ $book->item_name }}</div>
                                 <div>{{ $book->item_number }}</div>
                                 <div>{{ $book->item_amount }}</div>
