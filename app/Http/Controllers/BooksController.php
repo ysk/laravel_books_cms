@@ -86,6 +86,14 @@ class BooksController extends Controller
     public function searchBooks(Request $request)
     {
         $query = Book::query();
+
+        // カテゴリで絞り込み
+        if ($request->filled('category')) {
+            $category_id = $request->input('category');
+            $query->where('category_id', $category_id);
+        }
+
+        // キーワードで絞り込み
         if ($request->filled('keyword')) {
             $keyword = '%' . $this->escape($request->input('keyword')) . '%';
             $query->where(function ($query) use ($keyword) {
@@ -100,6 +108,7 @@ class BooksController extends Controller
             'result' => $result,
             ]);
     }
+
 
     //不正な値をエスケープする
     private function escape(string $value)

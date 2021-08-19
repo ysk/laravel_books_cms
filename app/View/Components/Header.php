@@ -2,6 +2,8 @@
 
 namespace App\View\Components;
 
+use App\Category;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 
 class Header extends Component
@@ -23,6 +25,13 @@ class Header extends Component
      */
     public function render()
     {
-        return view('components.header');
+        $user = Auth::user();
+        $categories = Category::orderBy('sort_no')->get();
+
+        return view('components.header')
+            ->with('user', $user)
+            ->with('categories', $categories)
+        ;
     }
 }
+
