@@ -6,7 +6,7 @@
     <form action="{{ route('book.store') }}" enctype= multipart/form-data method="POST" class="form-horizontal">
     @csrf
         <div class="form-group">
-           <label for="item_name">Title</label>
+           <label for="item_name">本のタイトル</label>
            <input type="text" name="item_name" class="form-control" value="{{ old('item_name') }}">
         </div>
 
@@ -16,18 +16,12 @@
         </div>
 
         <div class="form-group">
-            <label for="item_number">数</label>
+            <label for="item_number">冊数</label>
             <input type="text" name="item_number" class="form-control" value="{{ old('item_number') }}">
         </div>
 
         <div class="form-group">
-            <label for="published">公開日</label>
-            <input type="date" name="published" class="form-control" value="{{ old('published') }}"/>
-        </div>
-
-
-        <div class="form-group">
-            <label for="published">公開日</label>
+            <label for="published">出版日</label>
             <input type="date" name="published" class="form-control" value="{{ old('published') }}"/>
         </div>
 

@@ -23,23 +23,29 @@
                     @foreach ($books as $book)
                         <tr>
                             <td class="table-text">
-                                <div>{{ $book->item_name }}</div>
+                            <div><a href="{{ url('user/' . $book->user->id) }}">{{ $book->user->name }}</a>さん</div>    
+                            <div>{{ $book->item_name }}</div>
                                 <div>{{ $book->item_number }}</div>
                                 <div>{{ $book->item_amount }}</div>
                                 <div>{{ $book->published }}</div>
                             </td>
                             <td>
-                                <a href="{{ url('books/edit/' . $book->id) }}" class="btn btn-danger">更新</a>
+                                @auth
+                                    @if (Auth::id() == $book->user->id) 
+                                    <a href="{{ url('books/edit/' . $book->id) }}" class="btn btn-danger">更新</a>
+                                    @endif
+                                @endauth
                             </td>
                             <td>
-                                <form action="{{ url('books/destroy/' . $book->id) }}" method="POST">
+                                @auth
+                                    @if (Auth::id() == $book->user->id) 
+                                    <form action="{{ url('books/destroy/' . $book->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    
-                                    <button type="submit" class="btn btn-danger">
-                                        削除
-                                    </button>
-                                </form>
+                                    <button type="submit" class="btn btn-danger">削除</button>
+                                    </form>
+                                    @endif
+                                @endauth
                             </td>
                         </tr>
                     @endforeach

@@ -1,6 +1,7 @@
 <div class="container">
-<footer>
+<footer class="footer">
 
-<small>&copy; </small>
+<small>&copy; Yusuke Ikeda</small>
 </footer>
 </div>
+

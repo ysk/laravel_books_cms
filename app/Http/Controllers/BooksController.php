@@ -6,7 +6,7 @@ use App\Http\Requests\BookUpdateRequest;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Book;
-
+use App\User;
 
 class BooksController extends Controller
 {
@@ -14,11 +14,8 @@ class BooksController extends Controller
     //一覧
     public function index() {
 
-
         $books = Book::orderBy('created_at', 'asc')->paginate(5);
-       
 
-        
         return view('books', [
             'books' => $books
         ]);
@@ -49,7 +46,7 @@ class BooksController extends Controller
             'book' => $books
         ]);
     }
-    public function update(BookUpdateRequest $request, Book $books) {
+    public function update(BookPostRequest $request, Book $books) {
         $books = Book::find($request->id);
         $books->item_name   = $request->item_name;
         $books->item_number = $request->item_number;
