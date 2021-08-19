@@ -22,9 +22,9 @@ Route::middleware('auth')->group(function () {
     Route::prefix('books')->group(function () {
         Route::get('/create','BooksController@create')->name('book.create');
         Route::post('/store','BooksController@store')->name('book.store');
-        Route::get('/edit/{book_id}','BooksController@edit')->name('book.edit');
+        Route::get('/edit/{books}','BooksController@edit')->name('book.edit');
         Route::post('/update','BooksController@update')->name('book.update');
-        Route::delete('/destroy/{book_id}','BooksController@destroy')->name('book.destroy');
+        Route::delete('/destroy/{books}','BooksController@destroy')->name('book.destroy');
     });
 
     //マイページ

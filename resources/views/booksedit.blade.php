@@ -23,7 +23,7 @@
     
         <div class="form-group">
            <label for="published">出版日</label>
-            <input type="datetime" name="published" class="form-control" value="{{$book->published->format('Y年m月d日')}}"/>
+            <input type="datetime" name="published" class="form-control" value="{{$book->published}}"/>
         </div>
 
         <div class="form-group">
