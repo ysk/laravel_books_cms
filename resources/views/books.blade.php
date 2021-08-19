@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('JavaScript', 'books_index')
+
 @section('content')
 <div class="card-body">
     <div class="card-title">本のタイトル</div>
