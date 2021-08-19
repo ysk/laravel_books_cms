@@ -38,9 +38,9 @@
                                     <img src="/images/no_image.png" alt="No Image" style="width:150px;">
                                     @endif
                                     <div>{{ $book->item_name }}</div>
-                                    <div>{{ $book->item_number }}</div>
-                                    <div>{{ $book->item_amount }}</div>
-                                    <div>{{ $book->published }}</div>
+                                    <div>{{ $book->item_amount }}円</div>
+                                    <div>{{ $book->item_number }}冊</div>
+                                    <div>{{ $book->published->format('Y年m月d日') }}</div>
                                 </td>
                             </tr>
                         @endforeach

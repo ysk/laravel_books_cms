@@ -12,12 +12,12 @@
 
         <div class="form-group">
             <label for="item_amount">金額</label>
-            <input type="text" name="item_amount" class="form-control" value="{{ old('item_amount') }}">
+            <input type="text" name="item_amount" class="form-control" value="{{ old('item_amount') }}">円
         </div>
 
         <div class="form-group">
             <label for="item_number">冊数</label>
-            <input type="text" name="item_number" class="form-control" value="{{ old('item_number') }}">
+            <input type="text" name="item_number" class="form-control" value="{{ old('item_number') }}">冊
         </div>
 
         <div class="form-group">

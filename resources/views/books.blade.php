@@ -26,7 +26,7 @@
                             <div><a href="{{ url('user/' . $book->user->id) }}">{{ $book->user->name }}</a>さん</div>    
                             <div>{{ $book->item_name }}</div>
                                 <div>{{ $book->item_number }}</div>
-                                <div>{{ $book->item_amount }}</div>
+                                <div>{{ $book->item_amount }}円</div>
                                 <div>{{ $book->published->format('Y年m月d日') }}</div>
                                 <div>
                                 @if($book->item_img)
@@ -46,11 +46,13 @@
                             <td>
                                 @auth
                                     @if (Auth::id() == $book->user->id) 
-                                    <form action="{{ url('books/destroy/' . $book->id) }}" method="POST">
+                                    <div id="bookDelete">
+                                    <form action="{{ url('books/destroy/' . $book->id) }}" method="POST" @submit="confirmSubmit()">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">削除</button>
                                     </form>
+                                    </div>
                                     @endif
                                 @endauth
                             </td>
@@ -68,5 +70,8 @@
         </div>
     </div>
 </div>
+
+
+
 @endsection
 

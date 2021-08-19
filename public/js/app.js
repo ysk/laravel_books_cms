@@ -49869,7 +49869,13 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
  */
 
 var app = new Vue({
-  el: '#app'
+  el: '#bookDelete',
+  methods: {
+    confirmSubmit: function confirmSubmit(event) {
+      var confirm = confirm('本当に削除しますか？');
+      if (!confirm) event.preventDefault();
+    }
+  }
 });
 
 /***/ }),
